@@ -13,6 +13,13 @@ interface VideoResult {
   results: { key: string; type: string; site: string }[];
 }
 
+interface CastMember {
+  id: number;
+  name: string;
+  character: string;
+  profile_path: string | null;
+}
+
 async function getMovieDetails(id: string): Promise<MovieDetails | null> {
   const API_KEY = 'd29e79bb675e164fc1f28decd659e21c';
   const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=pt-BR`);
@@ -29,9 +36,18 @@ async function getMovieVideo(id: string): Promise<string | null> {
   return trailer ? trailer.key : null;
 }
 
+async function getMovieCast(id: string): Promise<CastMember[]> {
+  const API_KEY = 'd29e79bb675e164fc1f28decd659e21c';
+  const res = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=pt-BR`);
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.cast.slice(0, 8); // mostra os 8 principais
+}
+
 export default async function MoviePage({ params }: { params: { id: string } }) {
   const movie = await getMovieDetails(params.id);
   const trailerKey = await getMovieVideo(params.id);
+  const cast = await getMovieCast(params.id);
 
   if (!movie) return notFound();
 
@@ -65,6 +81,31 @@ export default async function MoviePage({ params }: { params: { id: string } }) 
           <div>
             <h2 className="text-2xl font-semibold mb-2">Sinopse</h2>
             <p className="text-justify text-slate-300">{movie.overview}</p>
+          </div>
+
+          {/* Elenco */}
+          <div>
+            <h2 className="text-2xl font-semibold mb-2 mt-8">Elenco Principal</h2>
+            <div className="flex flex-wrap gap-4">
+              {cast.length === 0 && <span className="text-slate-400">Elenco não disponível.</span>}
+              {cast.map(actor => (
+                <div key={actor.id} className="flex flex-col items-center w-24">
+                  {actor.profile_path ? (
+                    <img
+                      src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
+                      alt={actor.name}
+                      className="rounded-full w-20 h-20 object-cover border-2 border-blue-300 shadow-md mb-1"
+                    />
+                  ) : (
+                    <div className="rounded-full w-20 h-20 bg-slate-700 flex items-center justify-center text-slate-400 mb-1">
+                      ?
+                    </div>
+                  )}
+                  <span className="text-xs text-center text-blue-100 font-semibold">{actor.name}</span>
+                  <span className="text-[10px] text-center text-blue-300">{actor.character}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

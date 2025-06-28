@@ -1,3 +1,58 @@
+# MovieApp
+
+O MovieApp é um aplicativo web desenvolvido em Next.js + React que se conecta à API do TMDb (The Movie Database) para exibir filmes em cartaz, detalhes, busca personalizada e filtros. Interface moderna, responsiva e fácil de usar.
+
+## Funcionalidades
+- Listagem de filmes em cartaz com pôsteres e classificações
+- Detalhes completos de cada filme: sinopse, gêneros, data, nota, trailer e elenco principal
+- Busca personalizada por nome do filme
+- Filtros por popularidade, avaliação e ano de lançamento
+- Interface responsiva e agradável
+
+## Tecnologias Utilizadas
+- Next.js (React, TypeScript)
+- Tailwind CSS
+- API TMDb (The Movie Database)
+- Fetch API
+
+## Instalação e Execução
+1. Clone o repositório:
+   ```bash
+   git clone <url-do-repositorio>
+   cd ProjetoMoovieApp/Projeto
+   ```
+2. Instale as dependências:
+   ```bash
+   npm install
+   # ou
+   yarn install
+   ```
+3. Execute o projeto:
+   ```bash
+   npm run dev
+   # ou
+   yarn dev
+   ```
+4. Acesse [http://localhost:3000](http://localhost:3000)
+
+## Variáveis de Ambiente
+- A API KEY do TMDb já está embutida no código para fins acadêmicos.
+
+## Estrutura de Pastas
+- `src/app/page.tsx`: Página inicial (listagem, busca, filtros)
+- `src/app/filme/[id]/page.tsx`: Página de detalhes do filme
+
+## Prints de Tela
+Adicione prints das telas principais aqui para facilitar a visualização do projeto.
+
+## Observações
+- Projeto para fins educacionais.
+- Para produção, recomenda-se ocultar a API KEY em variáveis de ambiente.
+
+---
+
+Desenvolvido para a disciplina de Desenvolvimento de Aplicações Web.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
