@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 
 interface MovieDetails {
   title: string;
@@ -44,10 +45,11 @@ async function getMovieCast(id: string): Promise<CastMember[]> {
   return data.cast.slice(0, 8); // mostra os 8 principais
 }
 
-export default async function MoviePage({ params }: { params: { id: string } }) {
-  const movie = await getMovieDetails(params.id);
-  const trailerKey = await getMovieVideo(params.id);
-  const cast = await getMovieCast(params.id);
+export default async function MoviePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const movie = await getMovieDetails(id);
+  const trailerKey = await getMovieVideo(id);
+  const cast = await getMovieCast(id);
 
   if (!movie) return notFound();
 
@@ -58,9 +60,11 @@ export default async function MoviePage({ params }: { params: { id: string } }) 
       </h1>
 
       <div className="flex flex-col md:flex-row bg-white/5 backdrop-blur-lg rounded-2xl shadow-2xl overflow-hidden w-full max-w-6xl">
-        <img
+        <Image
           src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
+          width={500}
+          height={750}
           className="w-full md:w-1/3 object-cover hover:scale-105 transition-transform duration-500 ease-in-out"
         />
 
@@ -91,9 +95,11 @@ export default async function MoviePage({ params }: { params: { id: string } }) 
               {cast.map(actor => (
                 <div key={actor.id} className="flex flex-col items-center w-24">
                   {actor.profile_path ? (
-                    <img
+                    <Image
                       src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
                       alt={actor.name}
+                      width={80}
+                      height={80}
                       className="rounded-full w-20 h-20 object-cover border-2 border-blue-300 shadow-md mb-1"
                     />
                   ) : (

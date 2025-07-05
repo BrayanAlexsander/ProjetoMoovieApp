@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 interface Movie {
@@ -120,9 +121,11 @@ export default function Home() {
               key={movie.id}
               className="bg-slate-800/50 backdrop-blur-md rounded-2xl overflow-hidden shadow-lg hover:scale-105 hover:bg-slate-800/70 transition-transform duration-300 ease-in-out group"
             >
-              <img
+              <Image
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
+                width={500}
+                height={800}
                 className="w-full h-80 object-cover group-hover:opacity-80 transition-opacity duration-300"
               />
               <div className="p-4 text-blue-100 space-y-2">

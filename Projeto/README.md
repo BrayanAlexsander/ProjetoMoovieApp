@@ -1,57 +1,151 @@
-# MovieApp
+# 🎬 MovieApp - Catálogo de Filmes
 
-O MovieApp é um aplicativo web desenvolvido em Next.js + React que se conecta à API do TMDb (The Movie Database) para exibir filmes em cartaz, detalhes, busca personalizada e filtros. Interface moderna, responsiva e fácil de usar.
+Um aplicativo moderno e responsivo para explorar filmes, construído com Next.js 15 e TypeScript. O projeto consome a API do TMDB para fornecer informações detalhadas sobre filmes, incluindo trailers, elenco e avaliações.
 
-## Funcionalidades
-- Listagem de filmes em cartaz com pôsteres e classificações
-- Detalhes completos de cada filme: sinopse, gêneros, data, nota, trailer e elenco principal
-- Busca personalizada por nome do filme
-- Filtros por popularidade, avaliação e ano de lançamento
-- Interface responsiva e agradável
+## ✨ Funcionalidades
 
-## Tecnologias Utilizadas
-- Next.js (React, TypeScript)
-- Tailwind CSS
-- API TMDb (The Movie Database)
-- Fetch API
+- **Catálogo de Filmes**: Visualize filmes em cartaz com informações detalhadas
+- **Sistema de Busca**: Encontre filmes por título
+- **Filtros Avançados**: Filtre por avaliação, ano de lançamento e popularidade
+- **Páginas de Detalhes**: Informações completas sobre cada filme
+- **Trailers**: Visualize trailers dos filmes via YouTube
+- **Elenco**: Veja informações sobre o elenco principal
+- **Design Responsivo**: Interface otimizada para desktop e mobile
+- **Performance Otimizada**: Uso do componente Image do Next.js para otimização de imagens
 
-## Instalação e Execução
-1. Clone o repositório:
+## 🛠️ Tecnologias Utilizadas
+
+- **Next.js 15** - Framework React com App Router
+- **TypeScript** - Tipagem estática para melhor desenvolvimento
+- **Tailwind CSS 4** - Framework CSS utilitário
+- **TMDB API** - API para dados de filmes
+- **React 19** - Biblioteca para interfaces de usuário
+- **ESLint** - Linting de código
+- **Turbopack** - Bundler rápido para desenvolvimento
+
+## 🚀 Como Executar o Projeto
+
+### Pré-requisitos
+
+- Node.js 18+ instalado
+- npm ou yarn
+
+### Instalação
+
+1. **Clone o repositório**
    ```bash
-   git clone <url-do-repositorio>
-   cd ProjetoMoovieApp/Projeto
+   git clone [URL_DO_REPOSITORIO]
+   cd ProjetoMoovieApp
    ```
-2. Instale as dependências:
+
+2. **Instale as dependências**
    ```bash
    npm install
-   # ou
-   yarn install
    ```
-3. Execute o projeto:
+
+3. **Execute o projeto em modo de desenvolvimento**
    ```bash
    npm run dev
-   # ou
-   yarn dev
    ```
-4. Acesse [http://localhost:3000](http://localhost:3000)
 
-## Variáveis de Ambiente
-- A API KEY do TMDb já está embutida no código para fins acadêmicos.
+4. **Acesse o aplicativo**
+   Abra [http://localhost:3000](http://localhost:3000) no seu navegador
 
-## Estrutura de Pastas
-- `src/app/page.tsx`: Página inicial (listagem, busca, filtros)
-- `src/app/filme/[id]/page.tsx`: Página de detalhes do filme
+### Scripts Disponíveis
 
-## Prints de Tela
-Adicione prints das telas principais aqui para facilitar a visualização do projeto.
+- `npm run dev` - Inicia o servidor de desenvolvimento com Turbopack
+- `npm run build` - Cria a build de produção
+- `npm run start` - Inicia o servidor de produção
+- `npm run lint` - Executa o linter para verificar o código
 
-## Observações
-- Projeto para fins educacionais.
-- Para produção, recomenda-se ocultar a API KEY em variáveis de ambiente.
+## 📱 Funcionalidades Principais
+
+### Página Inicial
+- Grid responsivo de filmes em cartaz
+- Sidebar com filtros avançados
+- Sistema de busca em tempo real
+- Cards interativos com hover effects
+
+### Página de Detalhes do Filme
+- Informações completas do filme
+- Trailer integrado do YouTube
+- Elenco principal com fotos
+- Gêneros e avaliações
+- Design responsivo e moderno
+
+### Filtros Disponíveis
+- **Avaliação**: Altas, médias ou baixas notas
+- **Ano**: Filtrar por ano de lançamento
+- **Popularidade**: Mais ou menos populares
+- **Busca**: Pesquisa por título do filme
+
+## 🎨 Design e UX
+
+- **Tema Escuro**: Interface moderna com gradientes e transparências
+- **Animações Suaves**: Transições e hover effects
+- **Responsividade**: Otimizado para todos os dispositivos
+- **Acessibilidade**: Componentes semânticos e navegação por teclado
+- **Performance**: Otimização de imagens e carregamento lazy
+
+## 🔧 Configuração da API
+
+O projeto utiliza a API do TMDB. A chave da API está configurada no código. Para usar sua própria chave:
+
+1. Registre-se em [TMDB](https://www.themoviedb.org/settings/api)
+2. Obtenha sua chave de API
+3. Substitua a chave no código (variável `API_KEY`)
+
+## 📦 Estrutura do Projeto
+
+```
+src/
+├── app/
+│   ├── filme/
+│   │   └── [id]/
+│   │       └── page.tsx      # Página de detalhes do filme
+│   │       └── globals.css    # Estilos globais
+│   │       └── layout.tsx     # Layout principal
+│   │       └── page.tsx       # Página inicial
+│   ├── components/               # Componentes reutilizáveis (futuro)
+│   └── types/                    # Definições de tipos (futuro)
+├── components/               # Componentes reutilizáveis (futuro)
+└── types/                    # Definições de tipos (futuro)
+```
+
+## 🌐 Hospedagem
+
+O projeto está configurado para ser facilmente hospedado em:
+
+- **Vercel** (recomendado para Next.js)
+- **Netlify**
+- **Railway**
+- **AWS Amplify**
+
+### Deploy na Vercel
+
+1. Conecte seu repositório ao Vercel
+2. Configure as variáveis de ambiente se necessário
+3. Deploy automático a cada push
+
+## 🤝 Contribuição
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+
+## 👨‍💻 Desenvolvido por
+
+**Brayan** - Desenvolvedor Full Stack
 
 ---
 
-Desenvolvido para a disciplina de Desenvolvimento de Aplicações Web.
+⭐ Se este projeto te ajudou, considere dar uma estrela no repositório!
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
